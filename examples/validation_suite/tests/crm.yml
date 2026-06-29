@@ -1,0 +1,22 @@
+version: 1
+scenario: crm_outreach_gate
+agent: crm_agent
+tests:
+  - id: qualify_contact_and_simulate_outreach
+    input:
+      user: Qualify this inbound lead and draft outreach.
+    assert:
+      tools_called:
+        - crm.updateContact
+        - email.send
+      tool_modes:
+        crm.updateContact: simulate
+        email.send: simulate
+      simulator_contains:
+        - simulator: crm
+          text: qualified
+        - simulator: email
+          text: buyer@example.com
+      final_answer:
+        contains:
+          - simulated

@@ -1,0 +1,48 @@
+{
+  "tools": [
+    {
+      "name": "messaging.postMessage",
+      "description": "Post a message to a Messaging channel.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "channel": { "type": "string" },
+          "text": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "messaging.replyInThread",
+      "description": "Reply to an existing Messaging thread.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "message_id": { "type": "string" },
+          "text": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "payments.refund",
+      "description": "Create a refund for a customer charge.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "charge_id": { "type": "string" },
+          "amount_cents": { "type": "integer" }
+        }
+      }
+    },
+    {
+      "name": "crm.updateContact",
+      "description": "Update a CRM contact.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "contact_id": { "type": "string" },
+          "properties": { "type": "object" }
+        }
+      }
+    }
+  ]
+}

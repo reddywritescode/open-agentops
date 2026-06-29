@@ -1,0 +1,27 @@
+version: 1
+scenario: incident_messaging_gate
+agent: incident_agent
+tests:
+  - id: sev2_posts_update_without_paging
+    input:
+      user: Post an incident update for INC-17.
+      context:
+        incident_id: INC-17
+    assert:
+      tools_called:
+        - fetch_incident_logs
+        - messaging.postMessage
+      tools_not_called:
+        - incident.page
+      tool_modes:
+        messaging.postMessage: simulate
+      simulator_contains:
+        - simulator: messaging
+          text: INC-17
+        - simulator: messaging
+          text: payments-oncall
+      final_answer:
+        contains:
+          - Messaging
+        must_not_contain:
+          - paged

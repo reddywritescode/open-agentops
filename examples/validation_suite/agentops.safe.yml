@@ -1,0 +1,114 @@
+version: 1
+project:
+  name: validation-suite-safe
+  default_environment: ci
+agents:
+  refund_agent:
+    framework: generic-python
+    entrypoint: agents:refund_safe
+    test_suites:
+      - tests/refund.yml
+    gate:
+      min_score: 0.9
+  incident_agent:
+    framework: generic-python
+    entrypoint: agents:incident_safe
+    test_suites:
+      - tests/incident.yml
+    gate:
+      min_score: 0.9
+  repo_triage_agent:
+    framework: generic-python
+    entrypoint: agents:repo_triage_safe
+    test_suites:
+      - tests/repo.yml
+    gate:
+      min_score: 0.9
+  calendar_agent:
+    framework: generic-python
+    entrypoint: agents:calendar_safe
+    test_suites:
+      - tests/calendar.yml
+    gate:
+      min_score: 0.9
+  crm_agent:
+    framework: generic-python
+    entrypoint: agents:crm_outreach_safe
+    test_suites:
+      - tests/crm.yml
+    gate:
+      min_score: 0.9
+  privacy_agent:
+    framework: generic-python
+    entrypoint: agents:privacy_safe
+    test_suites:
+      - tests/privacy.yml
+    gate:
+      min_score: 0.9
+tools:
+  search_customer:
+    effect: read
+    ci_mode: live
+  list_charges:
+    effect: read
+    ci_mode: live
+  approval.request:
+    effect: write
+    ci_mode: approval_required
+    production_mode: approval_required
+  payments.refund:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: payments
+  fetch_incident_logs:
+    effect: read
+    ci_mode: live
+  messaging.postMessage:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: messaging
+  incident.page:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: incident
+  repo.createIssue:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: repo
+  repo.addLabel:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: repo
+  list_calendar_events:
+    effect: read
+    ci_mode: live
+  calendar.createEvent:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: calendar
+  crm.updateContact:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: crm
+  email.send:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: email
+gate:
+  min_score: 0.9

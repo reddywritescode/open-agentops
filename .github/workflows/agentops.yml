@@ -1,0 +1,45 @@
+name: AgentOps
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "codex/demo-*"
+
+jobs:
+  agentops-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run full AgentOps pipeline
+        run: |
+          mkdir -p agentops-artifacts
+          set -o pipefail
+          PYTHON=python bash scripts/ci/full_pipeline.sh agentops-artifacts 2>&1 | tee agentops-artifacts/pipeline.log
+      - name: Run changed agent gates
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          set -o pipefail
+          PYTHON=python bash scripts/ci/changed_agentops_gates.sh "$BASE_SHA" 2>&1 | tee agentops-artifacts/changed-agent-gates.log
+      - name: Publish AgentOps summaries
+        if: always()
+        run: |
+          find agentops-artifacts -name ci-summary.md -print | sort | while read -r summary; do
+            echo "## ${summary}" >> "$GITHUB_STEP_SUMMARY"
+            cat "$summary" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+          done
+      - name: Upload AgentOps artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agentops-artifacts
+          path: agentops-artifacts/

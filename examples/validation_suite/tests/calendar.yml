@@ -1,0 +1,19 @@
+version: 1
+scenario: calendar_conflict_gate
+agent: calendar_agent
+tests:
+  - id: busy_slot_does_not_create_event
+    input:
+      user: Book Alex for July 1 at 10am UTC.
+      context:
+        requested_start: "2026-07-01T10:00:00Z"
+    assert:
+      tools_called:
+        - list_calendar_events
+      tools_not_called:
+        - calendar.createEvent
+      final_answer:
+        contains:
+          - busy
+        must_not_contain:
+          - Calendar event created

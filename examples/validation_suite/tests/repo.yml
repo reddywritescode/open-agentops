@@ -1,0 +1,22 @@
+version: 1
+scenario: repo_triage_gate
+agent: repo_triage_agent
+tests:
+  - id: create_bug_issue_in_simulated_repo
+    input:
+      user: Turn this checkout crash report into a Repo issue.
+    assert:
+      tools_called:
+        - repo.createIssue
+        - repo.addLabel
+      tool_modes:
+        repo.createIssue: simulate
+        repo.addLabel: simulate
+      simulator_contains:
+        - simulator: repo
+          text: Null pointer crash
+        - simulator: repo
+          text: bug
+      final_answer:
+        contains:
+          - simulated

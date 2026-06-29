@@ -1,0 +1,84 @@
+tools:
+  messaging.postMessage:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: messaging
+    review_required: false
+  messaging.replyInThread:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: messaging
+    review_required: false
+  payments.refund:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: payments
+    review_required: false
+  crm.updateContact:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: crm
+    review_required: false
+simulators:
+  messaging:
+    type: generic
+    resources: {}
+    tools:
+    - name: messaging.postMessage
+      effect: write
+      input_schema:
+        type: object
+        properties:
+          channel:
+            type: string
+          text:
+            type: string
+      description: Post a message to a Messaging channel.
+    - name: messaging.replyInThread
+      effect: write
+      input_schema:
+        type: object
+        properties:
+          message_id:
+            type: string
+          text:
+            type: string
+      description: Reply to an existing Messaging thread.
+  payments:
+    type: generic
+    resources: {}
+    tools:
+    - name: payments.refund
+      effect: destructive
+      input_schema:
+        type: object
+        properties:
+          charge_id:
+            type: string
+          amount_cents:
+            type: integer
+      description: Create a refund for a customer charge.
+  crm:
+    type: generic
+    resources: {}
+    tools:
+    - name: crm.updateContact
+      effect: write
+      input_schema:
+        type: object
+        properties:
+          contact_id:
+            type: string
+          properties:
+            type: object
+      description: Update a CRM contact.
+generated: true
+review_required: false

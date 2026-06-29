@@ -1,0 +1,863 @@
+version: 1
+project:
+  name: litmus-100-safe
+  default_environment: ci
+agents:
+  billing_single_step_readonly_001:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_001
+    test_suites:
+    - tests/billing_single_step_readonly_001.yml
+    gate:
+      min_score: 0.99
+  billing_sequential_workflow_002:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_002
+    test_suites:
+    - tests/billing_sequential_workflow_002.yml
+    gate:
+      min_score: 0.99
+  billing_planner_router_003:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_003
+    test_suites:
+    - tests/billing_planner_router_003.yml
+    gate:
+      min_score: 0.99
+  billing_orchestrator_fanout_004:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_004
+    test_suites:
+    - tests/billing_orchestrator_fanout_004.yml
+    gate:
+      min_score: 0.99
+  billing_multi_turn_memory_005:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_005
+    test_suites:
+    - tests/billing_multi_turn_memory_005.yml
+    gate:
+      min_score: 0.99
+  billing_approval_guarded_006:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_006
+    test_suites:
+    - tests/billing_approval_guarded_006.yml
+    gate:
+      min_score: 0.99
+  billing_privacy_redaction_007:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_007
+    test_suites:
+    - tests/billing_privacy_redaction_007.yml
+    gate:
+      min_score: 0.99
+  billing_budget_guard_008:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_008
+    test_suites:
+    - tests/billing_budget_guard_008.yml
+    gate:
+      min_score: 0.99
+  billing_recovery_retry_009:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_009
+    test_suites:
+    - tests/billing_recovery_retry_009.yml
+    gate:
+      min_score: 0.99
+  billing_stateful_simulator_010:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_010
+    test_suites:
+    - tests/billing_stateful_simulator_010.yml
+    gate:
+      min_score: 0.99
+  incident_single_step_readonly_011:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_011
+    test_suites:
+    - tests/incident_single_step_readonly_011.yml
+    gate:
+      min_score: 0.99
+  incident_sequential_workflow_012:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_012
+    test_suites:
+    - tests/incident_sequential_workflow_012.yml
+    gate:
+      min_score: 0.99
+  incident_planner_router_013:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_013
+    test_suites:
+    - tests/incident_planner_router_013.yml
+    gate:
+      min_score: 0.99
+  incident_orchestrator_fanout_014:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_014
+    test_suites:
+    - tests/incident_orchestrator_fanout_014.yml
+    gate:
+      min_score: 0.99
+  incident_multi_turn_memory_015:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_015
+    test_suites:
+    - tests/incident_multi_turn_memory_015.yml
+    gate:
+      min_score: 0.99
+  incident_approval_guarded_016:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_016
+    test_suites:
+    - tests/incident_approval_guarded_016.yml
+    gate:
+      min_score: 0.99
+  incident_privacy_redaction_017:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_017
+    test_suites:
+    - tests/incident_privacy_redaction_017.yml
+    gate:
+      min_score: 0.99
+  incident_budget_guard_018:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_018
+    test_suites:
+    - tests/incident_budget_guard_018.yml
+    gate:
+      min_score: 0.99
+  incident_recovery_retry_019:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_019
+    test_suites:
+    - tests/incident_recovery_retry_019.yml
+    gate:
+      min_score: 0.99
+  incident_stateful_simulator_020:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_020
+    test_suites:
+    - tests/incident_stateful_simulator_020.yml
+    gate:
+      min_score: 0.99
+  sales_single_step_readonly_021:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_021
+    test_suites:
+    - tests/sales_single_step_readonly_021.yml
+    gate:
+      min_score: 0.99
+  sales_sequential_workflow_022:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_022
+    test_suites:
+    - tests/sales_sequential_workflow_022.yml
+    gate:
+      min_score: 0.99
+  sales_planner_router_023:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_023
+    test_suites:
+    - tests/sales_planner_router_023.yml
+    gate:
+      min_score: 0.99
+  sales_orchestrator_fanout_024:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_024
+    test_suites:
+    - tests/sales_orchestrator_fanout_024.yml
+    gate:
+      min_score: 0.99
+  sales_multi_turn_memory_025:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_025
+    test_suites:
+    - tests/sales_multi_turn_memory_025.yml
+    gate:
+      min_score: 0.99
+  sales_approval_guarded_026:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_026
+    test_suites:
+    - tests/sales_approval_guarded_026.yml
+    gate:
+      min_score: 0.99
+  sales_privacy_redaction_027:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_027
+    test_suites:
+    - tests/sales_privacy_redaction_027.yml
+    gate:
+      min_score: 0.99
+  sales_budget_guard_028:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_028
+    test_suites:
+    - tests/sales_budget_guard_028.yml
+    gate:
+      min_score: 0.99
+  sales_recovery_retry_029:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_029
+    test_suites:
+    - tests/sales_recovery_retry_029.yml
+    gate:
+      min_score: 0.99
+  sales_stateful_simulator_030:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_030
+    test_suites:
+    - tests/sales_stateful_simulator_030.yml
+    gate:
+      min_score: 0.99
+  hr_single_step_readonly_031:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_031
+    test_suites:
+    - tests/hr_single_step_readonly_031.yml
+    gate:
+      min_score: 0.99
+  hr_sequential_workflow_032:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_032
+    test_suites:
+    - tests/hr_sequential_workflow_032.yml
+    gate:
+      min_score: 0.99
+  hr_planner_router_033:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_033
+    test_suites:
+    - tests/hr_planner_router_033.yml
+    gate:
+      min_score: 0.99
+  hr_orchestrator_fanout_034:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_034
+    test_suites:
+    - tests/hr_orchestrator_fanout_034.yml
+    gate:
+      min_score: 0.99
+  hr_multi_turn_memory_035:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_035
+    test_suites:
+    - tests/hr_multi_turn_memory_035.yml
+    gate:
+      min_score: 0.99
+  hr_approval_guarded_036:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_036
+    test_suites:
+    - tests/hr_approval_guarded_036.yml
+    gate:
+      min_score: 0.99
+  hr_privacy_redaction_037:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_037
+    test_suites:
+    - tests/hr_privacy_redaction_037.yml
+    gate:
+      min_score: 0.99
+  hr_budget_guard_038:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_038
+    test_suites:
+    - tests/hr_budget_guard_038.yml
+    gate:
+      min_score: 0.99
+  hr_recovery_retry_039:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_039
+    test_suites:
+    - tests/hr_recovery_retry_039.yml
+    gate:
+      min_score: 0.99
+  hr_stateful_simulator_040:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_040
+    test_suites:
+    - tests/hr_stateful_simulator_040.yml
+    gate:
+      min_score: 0.99
+  healthcare_single_step_readonly_041:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_041
+    test_suites:
+    - tests/healthcare_single_step_readonly_041.yml
+    gate:
+      min_score: 0.99
+  healthcare_sequential_workflow_042:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_042
+    test_suites:
+    - tests/healthcare_sequential_workflow_042.yml
+    gate:
+      min_score: 0.99
+  healthcare_planner_router_043:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_043
+    test_suites:
+    - tests/healthcare_planner_router_043.yml
+    gate:
+      min_score: 0.99
+  healthcare_orchestrator_fanout_044:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_044
+    test_suites:
+    - tests/healthcare_orchestrator_fanout_044.yml
+    gate:
+      min_score: 0.99
+  healthcare_multi_turn_memory_045:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_045
+    test_suites:
+    - tests/healthcare_multi_turn_memory_045.yml
+    gate:
+      min_score: 0.99
+  healthcare_approval_guarded_046:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_046
+    test_suites:
+    - tests/healthcare_approval_guarded_046.yml
+    gate:
+      min_score: 0.99
+  healthcare_privacy_redaction_047:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_047
+    test_suites:
+    - tests/healthcare_privacy_redaction_047.yml
+    gate:
+      min_score: 0.99
+  healthcare_budget_guard_048:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_048
+    test_suites:
+    - tests/healthcare_budget_guard_048.yml
+    gate:
+      min_score: 0.99
+  healthcare_recovery_retry_049:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_049
+    test_suites:
+    - tests/healthcare_recovery_retry_049.yml
+    gate:
+      min_score: 0.99
+  healthcare_stateful_simulator_050:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_050
+    test_suites:
+    - tests/healthcare_stateful_simulator_050.yml
+    gate:
+      min_score: 0.99
+  finance_single_step_readonly_051:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_051
+    test_suites:
+    - tests/finance_single_step_readonly_051.yml
+    gate:
+      min_score: 0.99
+  finance_sequential_workflow_052:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_052
+    test_suites:
+    - tests/finance_sequential_workflow_052.yml
+    gate:
+      min_score: 0.99
+  finance_planner_router_053:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_053
+    test_suites:
+    - tests/finance_planner_router_053.yml
+    gate:
+      min_score: 0.99
+  finance_orchestrator_fanout_054:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_054
+    test_suites:
+    - tests/finance_orchestrator_fanout_054.yml
+    gate:
+      min_score: 0.99
+  finance_multi_turn_memory_055:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_055
+    test_suites:
+    - tests/finance_multi_turn_memory_055.yml
+    gate:
+      min_score: 0.99
+  finance_approval_guarded_056:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_056
+    test_suites:
+    - tests/finance_approval_guarded_056.yml
+    gate:
+      min_score: 0.99
+  finance_privacy_redaction_057:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_057
+    test_suites:
+    - tests/finance_privacy_redaction_057.yml
+    gate:
+      min_score: 0.99
+  finance_budget_guard_058:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_058
+    test_suites:
+    - tests/finance_budget_guard_058.yml
+    gate:
+      min_score: 0.99
+  finance_recovery_retry_059:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_059
+    test_suites:
+    - tests/finance_recovery_retry_059.yml
+    gate:
+      min_score: 0.99
+  finance_stateful_simulator_060:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_060
+    test_suites:
+    - tests/finance_stateful_simulator_060.yml
+    gate:
+      min_score: 0.99
+  devops_single_step_readonly_061:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_061
+    test_suites:
+    - tests/devops_single_step_readonly_061.yml
+    gate:
+      min_score: 0.99
+  devops_sequential_workflow_062:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_062
+    test_suites:
+    - tests/devops_sequential_workflow_062.yml
+    gate:
+      min_score: 0.99
+  devops_planner_router_063:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_063
+    test_suites:
+    - tests/devops_planner_router_063.yml
+    gate:
+      min_score: 0.99
+  devops_orchestrator_fanout_064:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_064
+    test_suites:
+    - tests/devops_orchestrator_fanout_064.yml
+    gate:
+      min_score: 0.99
+  devops_multi_turn_memory_065:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_065
+    test_suites:
+    - tests/devops_multi_turn_memory_065.yml
+    gate:
+      min_score: 0.99
+  devops_approval_guarded_066:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_066
+    test_suites:
+    - tests/devops_approval_guarded_066.yml
+    gate:
+      min_score: 0.99
+  devops_privacy_redaction_067:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_067
+    test_suites:
+    - tests/devops_privacy_redaction_067.yml
+    gate:
+      min_score: 0.99
+  devops_budget_guard_068:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_068
+    test_suites:
+    - tests/devops_budget_guard_068.yml
+    gate:
+      min_score: 0.99
+  devops_recovery_retry_069:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_069
+    test_suites:
+    - tests/devops_recovery_retry_069.yml
+    gate:
+      min_score: 0.99
+  devops_stateful_simulator_070:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_070
+    test_suites:
+    - tests/devops_stateful_simulator_070.yml
+    gate:
+      min_score: 0.99
+  legal_single_step_readonly_071:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_071
+    test_suites:
+    - tests/legal_single_step_readonly_071.yml
+    gate:
+      min_score: 0.99
+  legal_sequential_workflow_072:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_072
+    test_suites:
+    - tests/legal_sequential_workflow_072.yml
+    gate:
+      min_score: 0.99
+  legal_planner_router_073:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_073
+    test_suites:
+    - tests/legal_planner_router_073.yml
+    gate:
+      min_score: 0.99
+  legal_orchestrator_fanout_074:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_074
+    test_suites:
+    - tests/legal_orchestrator_fanout_074.yml
+    gate:
+      min_score: 0.99
+  legal_multi_turn_memory_075:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_075
+    test_suites:
+    - tests/legal_multi_turn_memory_075.yml
+    gate:
+      min_score: 0.99
+  legal_approval_guarded_076:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_076
+    test_suites:
+    - tests/legal_approval_guarded_076.yml
+    gate:
+      min_score: 0.99
+  legal_privacy_redaction_077:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_077
+    test_suites:
+    - tests/legal_privacy_redaction_077.yml
+    gate:
+      min_score: 0.99
+  legal_budget_guard_078:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_078
+    test_suites:
+    - tests/legal_budget_guard_078.yml
+    gate:
+      min_score: 0.99
+  legal_recovery_retry_079:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_079
+    test_suites:
+    - tests/legal_recovery_retry_079.yml
+    gate:
+      min_score: 0.99
+  legal_stateful_simulator_080:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_080
+    test_suites:
+    - tests/legal_stateful_simulator_080.yml
+    gate:
+      min_score: 0.99
+  ecommerce_single_step_readonly_081:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_081
+    test_suites:
+    - tests/ecommerce_single_step_readonly_081.yml
+    gate:
+      min_score: 0.99
+  ecommerce_sequential_workflow_082:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_082
+    test_suites:
+    - tests/ecommerce_sequential_workflow_082.yml
+    gate:
+      min_score: 0.99
+  ecommerce_planner_router_083:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_083
+    test_suites:
+    - tests/ecommerce_planner_router_083.yml
+    gate:
+      min_score: 0.99
+  ecommerce_orchestrator_fanout_084:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_084
+    test_suites:
+    - tests/ecommerce_orchestrator_fanout_084.yml
+    gate:
+      min_score: 0.99
+  ecommerce_multi_turn_memory_085:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_085
+    test_suites:
+    - tests/ecommerce_multi_turn_memory_085.yml
+    gate:
+      min_score: 0.99
+  ecommerce_approval_guarded_086:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_086
+    test_suites:
+    - tests/ecommerce_approval_guarded_086.yml
+    gate:
+      min_score: 0.99
+  ecommerce_privacy_redaction_087:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_087
+    test_suites:
+    - tests/ecommerce_privacy_redaction_087.yml
+    gate:
+      min_score: 0.99
+  ecommerce_budget_guard_088:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_088
+    test_suites:
+    - tests/ecommerce_budget_guard_088.yml
+    gate:
+      min_score: 0.99
+  ecommerce_recovery_retry_089:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_089
+    test_suites:
+    - tests/ecommerce_recovery_retry_089.yml
+    gate:
+      min_score: 0.99
+  ecommerce_stateful_simulator_090:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_090
+    test_suites:
+    - tests/ecommerce_stateful_simulator_090.yml
+    gate:
+      min_score: 0.99
+  data_single_step_readonly_091:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_091
+    test_suites:
+    - tests/data_single_step_readonly_091.yml
+    gate:
+      min_score: 0.99
+  data_sequential_workflow_092:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_092
+    test_suites:
+    - tests/data_sequential_workflow_092.yml
+    gate:
+      min_score: 0.99
+  data_planner_router_093:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_093
+    test_suites:
+    - tests/data_planner_router_093.yml
+    gate:
+      min_score: 0.99
+  data_orchestrator_fanout_094:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_094
+    test_suites:
+    - tests/data_orchestrator_fanout_094.yml
+    gate:
+      min_score: 0.99
+  data_multi_turn_memory_095:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_095
+    test_suites:
+    - tests/data_multi_turn_memory_095.yml
+    gate:
+      min_score: 0.99
+  data_approval_guarded_096:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_096
+    test_suites:
+    - tests/data_approval_guarded_096.yml
+    gate:
+      min_score: 0.99
+  data_privacy_redaction_097:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_097
+    test_suites:
+    - tests/data_privacy_redaction_097.yml
+    gate:
+      min_score: 0.99
+  data_budget_guard_098:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_098
+    test_suites:
+    - tests/data_budget_guard_098.yml
+    gate:
+      min_score: 0.99
+  data_recovery_retry_099:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_099
+    test_suites:
+    - tests/data_recovery_retry_099.yml
+    gate:
+      min_score: 0.99
+  data_stateful_simulator_100:
+    framework: generic-python
+    entrypoint: litmus_agents:agent_100
+    test_suites:
+    - tests/data_stateful_simulator_100.yml
+    gate:
+      min_score: 0.99
+tools:
+  knowledge.search:
+    effect: read
+    ci_mode: live
+  account.lookup:
+    effect: read
+    ci_mode: live
+  policy.lookup:
+    effect: read
+    ci_mode: live
+  metrics.query:
+    effect: read
+    ci_mode: live
+  risk.score:
+    effect: read
+    ci_mode: live
+  approval.request:
+    effect: write
+    ci_mode: approval_required
+    production_mode: approval_required
+  crm.updateContact:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: crm
+  ticketing.createTicket:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: ticketing
+  support.createTicket:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: support
+  messaging.postMessage:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: messaging
+  email.send:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: email
+  repo.createIssue:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: repo
+  repo.addLabel:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: repo
+  calendar.createEvent:
+    effect: write
+    ci_mode: simulate
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: calendar
+  payments.refund:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: payments
+  incident.page:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: incident
+  crm.mergeAccounts:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: crm
+  access.revokeUser:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: access
+  pharmacy.dispenseMedication:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: pharmacy
+  banking.transfer:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: banking
+  terraform.apply:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: terraform
+  contract.signAgreement:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: contract
+  commerce.cancelOrder:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: commerce
+  data.exportRaw:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: data
+simulators:
+  ticketing:
+    type: generic
+    tools: []
+  support:
+    type: generic
+    tools: []
+  access:
+    type: generic
+    tools: []
+  pharmacy:
+    type: generic
+    tools: []
+  banking:
+    type: generic
+    tools: []
+  terraform:
+    type: generic
+    tools: []
+  contract:
+    type: generic
+    tools: []
+  commerce:
+    type: generic
+    tools: []
+  data:
+    type: generic
+    tools: []
+gate:
+  min_score: 0.99

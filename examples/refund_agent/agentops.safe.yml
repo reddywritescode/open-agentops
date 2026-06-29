@@ -1,0 +1,38 @@
+version: 1
+
+project:
+  name: refund-agent-safe-demo
+  default_environment: ci
+
+agents:
+  billing_support:
+    framework: generic-python
+    entrypoint: agent:safe_agent
+    test_suites:
+      - tests/billing_support.yml
+    gate:
+      min_score: 0.85
+
+tools:
+  search_customer:
+    effect: read
+    ci_mode: live
+  list_charges:
+    effect: read
+    ci_mode: live
+  request_approval:
+    effect: write
+    ci_mode: approval_required
+  messaging.postMessage:
+    effect: write
+    ci_mode: simulate
+    simulator: messaging
+  payments.refund:
+    effect: destructive
+    ci_mode: block
+    staging_mode: sandbox
+    production_mode: approval_required
+    simulator: payments
+
+gate:
+  min_score: 0.85
