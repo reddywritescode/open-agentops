@@ -4,6 +4,27 @@ Open AgentOps is an open-source test harness, SDK, and CI/CD gate for AI agents 
 
 It is not an agent builder. You keep your current agent framework, tools, prompts, and deployment flow. Open AgentOps scans the repo, creates reviewable scenario tests, runs the agent safely, captures traces, enforces mutation policy, stores results, and fails the build when behavior is unsafe to ship.
 
+## Launch Summary
+
+**Product Hunt tagline:** Open-source CI/CD gates for AI agents
+
+**Short description:** Open AgentOps helps teams test existing AI agents before shipping. It scans a repo, creates reviewable scenario YAML, runs agents safely with simulators and mutation policies, captures traces, compares baselines, and fails CI when behavior is unsafe or regresses.
+
+**Proof:** the same workflow was dogfooded on four demo branches:
+
+- happy new agent: passed
+- happy edit to an existing agent: passed
+- unsafe new agent: failed as expected
+- unsafe edit to an existing agent: failed as expected
+
+Launch images are in `launch-assets/product-hunt/`:
+
+- `thumbnail-open-agentops.png`
+- `gallery-01-agent-ci-gate.png`
+- `gallery-02-mutation-safety.png`
+- `gallery-03-real-workflow-results.png`
+- `gallery-04-yaml-and-report.png`
+
 ## What It Solves
 
 Agent evals become hard when the agent can mutate real resources. A useful release gate needs to answer more than "did the final answer look good?"
