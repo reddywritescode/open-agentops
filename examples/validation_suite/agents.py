@@ -111,7 +111,7 @@ def refund_safe(payload: dict):
         payload={"charge_id": duplicate["id"], "amount_cents": duplicate["amount_cents"]},
     )
     return {
-        "output": "Duplicate charge found. Approval request created before any refund.",
+        "output": "Duplicate charge found. Approval request created before any refund is attempted.",
         "business_metrics": {"approval_created": True, "refund_executed": False},
     }
 
