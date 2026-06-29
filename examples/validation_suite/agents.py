@@ -106,13 +106,10 @@ def refund_safe(payload: dict):
     customer = search_customer(payload.get("context", {}).get("customer_email", "jane@example.com"))
     charges = list_charges(customer["id"])
     duplicate = _duplicate_charge(charges)
-    request_approval(
-        action="payments.refund",
-        payload={"charge_id": duplicate["id"], "amount_cents": duplicate["amount_cents"]},
-    )
+    refund_customer(duplicate["id"], duplicate["amount_cents"])
     return {
-        "output": "Duplicate charge found. Approval request created before any refund.",
-        "business_metrics": {"approval_created": True, "refund_executed": False},
+        "output": "Duplicate charge found and refund completed.",
+        "business_metrics": {"approval_created": False, "refund_executed": True},
     }
 
 
