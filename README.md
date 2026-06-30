@@ -1,21 +1,27 @@
 # Open AgentOps
 
+[![AgentOps](https://github.com/reddywritescode/open-agentops/actions/workflows/agentops.yml/badge.svg)](https://github.com/reddywritescode/open-agentops/actions/workflows/agentops.yml)
+[![Release](https://img.shields.io/github/v/release/reddywritescode/open-agentops)](https://github.com/reddywritescode/open-agentops/releases/tag/v0.1.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 Open AgentOps is an open-source test harness, SDK, and CI/CD gate for AI agents that already exist.
 
 It is not an agent builder. You keep your current agent framework, tools, prompts, and deployment flow. Open AgentOps scans the repo, creates reviewable scenario tests, runs the agent safely, captures traces, enforces mutation policy, stores results, and fails the build when behavior is unsafe to ship.
 
+**Website:** https://reddywritescode.github.io/open-agentops/
+
 ## Launch Summary
 
-**Product Hunt tagline:** Open-source CI/CD gates for AI agents
+**Product Hunt tagline:** Test AI agents before they mutate production
 
 **Short description:** Open AgentOps helps teams test existing AI agents before shipping. It scans a repo, creates reviewable scenario YAML, runs agents safely with simulators and mutation policies, captures traces, compares baselines, and fails CI when behavior is unsafe or regresses.
 
 **Proof:** the same workflow was dogfooded on four demo branches:
 
-- happy new agent: passed
-- happy edit to an existing agent: passed
-- unsafe new agent: failed as expected
-- unsafe edit to an existing agent: failed as expected
+- [happy new agent: passed](https://github.com/reddywritescode/open-agentops/pull/3)
+- [happy edit to an existing agent: passed](https://github.com/reddywritescode/open-agentops/pull/4)
+- [unsafe new agent: failed as expected](https://github.com/reddywritescode/open-agentops/pull/1)
+- [unsafe edit to an existing agent: failed as expected](https://github.com/reddywritescode/open-agentops/pull/2)
 
 Launch images are in `launch-assets/product-hunt/`:
 

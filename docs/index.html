@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open AgentOps - CI/CD gates for AI agents</title>
+    <meta
+      name="description"
+      content="Open AgentOps is an open-source CI/CD gate for AI agents. Test existing agents before they mutate production."
+    />
+    <meta property="og:title" content="Open AgentOps" />
+    <meta
+      property="og:description"
+      content="Test AI agents before they mutate production. Scenario YAML, safe tool policies, traces, reports, baselines, and CI gates."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/workflow-results.png" />
+    <link rel="icon" href="assets/thumbnail-open-agentops.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Open AgentOps home">
+        <img src="assets/thumbnail-open-agentops.png" alt="" />
+        <span>Open AgentOps</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#proof">Proof</a>
+        <a href="#how">How it works</a>
+        <a href="#quickstart">Quickstart</a>
+        <a href="https://github.com/reddywritescode/open-agentops">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-backdrop" role="img" aria-label="Open AgentOps CI workflow results"></div>
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Open source agent safety for release pipelines</p>
+          <h1 id="hero-title">Open AgentOps</h1>
+          <p class="hero-copy">
+            Test AI agents before they mutate production. Scan existing agents, run scenario YAML,
+            simulate risky tools, capture traces, and fail CI when behavior is unsafe to ship.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button button-primary" href="https://github.com/reddywritescode/open-agentops">View on GitHub</a>
+            <a class="button button-secondary" href="#quickstart">Install and run</a>
+          </div>
+          <div class="hero-stats" aria-label="Release proof">
+            <span>v0.1.0 released</span>
+            <span>11 contract tests</span>
+            <span>4 live demo PRs</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section story" aria-labelledby="story-title">
+        <div class="section-lede">
+          <p class="eyebrow">Why this exists</p>
+          <h2 id="story-title">Agents moved from chat to action. Evals need to move with them.</h2>
+          <p>
+            Once an agent can post messages, issue refunds, open tickets, page people, or email customers,
+            the final answer is not enough. The release gate has to inspect what the agent tried to do.
+          </p>
+        </div>
+        <div class="story-grid">
+          <article class="story-card">
+            <span class="step">1</span>
+            <h3>Normal evals miss tool risk</h3>
+            <p>A polished final answer can hide a forbidden tool call, leaked secret, or false success claim.</p>
+          </article>
+          <article class="story-card">
+            <span class="step">2</span>
+            <h3>Mutation tests need policy</h3>
+            <p>CI should know whether a tool is read-only, simulated, sandboxed, approval-gated, or blocked.</p>
+          </article>
+          <article class="story-card">
+            <span class="step">3</span>
+            <h3>Agent behavior becomes reviewable</h3>
+            <p>Scenario YAML, traces, reports, and baselines make unsafe behavior visible before merge.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section proof" id="proof" aria-labelledby="proof-title">
+        <div class="section-lede">
+          <p class="eyebrow">Dogfooded in GitHub Actions</p>
+          <h2 id="proof-title">Safe changes pass. Unsafe mutations fail.</h2>
+          <p>
+            The release was validated with real pull requests. Two safe agent changes pass the gate.
+            Two unsafe changes fail because they skip approval and attempt destructive behavior.
+          </p>
+        </div>
+        <div class="proof-layout">
+          <img src="assets/workflow-results.png" alt="Open AgentOps workflow result matrix showing pass and fail cases" />
+          <div class="pr-list" aria-label="Demo pull requests">
+            <a class="pr-row pass" href="https://github.com/reddywritescode/open-agentops/pull/3">
+              <span>New safe agent</span>
+              <strong>PASS</strong>
+            </a>
+            <a class="pr-row pass" href="https://github.com/reddywritescode/open-agentops/pull/4">
+              <span>Safe agent edit</span>
+              <strong>PASS</strong>
+            </a>
+            <a class="pr-row fail" href="https://github.com/reddywritescode/open-agentops/pull/1">
+              <span>New unsafe agent</span>
+              <strong>FAIL</strong>
+            </a>
+            <a class="pr-row fail" href="https://github.com/reddywritescode/open-agentops/pull/2">
+              <span>Unsafe agent edit</span>
+              <strong>FAIL</strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contrast" id="how" aria-labelledby="how-title">
+        <div class="section-lede">
+          <p class="eyebrow">How the gate thinks</p>
+          <h2 id="how-title">Every risky tool gets an execution mode.</h2>
+          <p>
+            CI does not need to touch production to test realistic behavior. Open AgentOps routes each tool
+            through the mode that matches its risk.
+          </p>
+        </div>
+        <div class="mode-grid">
+          <article class="mode-card">
+            <h3>live</h3>
+            <p>Read-only calls that are safe to run in CI.</p>
+          </article>
+          <article class="mode-card">
+            <h3>simulate</h3>
+            <p>Stateful fake resources for write-like behavior.</p>
+          </article>
+          <article class="mode-card">
+            <h3>sandbox</h3>
+            <p>Non-production environments for integration checks.</p>
+          </article>
+          <article class="mode-card">
+            <h3>approval_required</h3>
+            <p>Human approval before destructive or visible actions.</p>
+          </article>
+          <article class="mode-card">
+            <h3>block</h3>
+            <p>Immediate failure when a forbidden tool is attempted.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split" aria-labelledby="yaml-title">
+        <div>
+          <p class="eyebrow">Reviewable scenario contracts</p>
+          <h2 id="yaml-title">YAML becomes the test case. The trace becomes the evidence.</h2>
+          <p>
+            Teams can generate draft scenarios from agents and traces, review them like code, and commit
+            them as release gates. The result is exported as JSON, Markdown, HTML, JUnit, and trace artifacts.
+          </p>
+        </div>
+        <img src="assets/yaml-report.png" alt="Scenario YAML and failing CI report" />
+      </section>
+
+      <section class="section quickstart" id="quickstart" aria-labelledby="quickstart-title">
+        <div class="section-lede">
+          <p class="eyebrow">Use it in an existing agent repo</p>
+          <h2 id="quickstart-title">Install, generate scenarios, gate the build.</h2>
+        </div>
+        <div class="terminal" aria-label="Open AgentOps quickstart commands">
+          <div class="terminal-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <pre><code>pip install git+https://github.com/reddywritescode/open-agentops.git
+
+open-agentops scan examples/refund_agent
+open-agentops generate simulators --from examples/refund_agent/tool_manifest.json
+open-agentops test run --config examples/refund_agent/agentops.safe.yml
+open-agentops gate --config examples/refund_agent/agentops.safe.yml</code></pre>
+        </div>
+      </section>
+
+      <section class="section launch" aria-labelledby="launch-title">
+        <div>
+          <p class="eyebrow">First public release</p>
+          <h2 id="launch-title">Open source, self-hostable, and built for CI.</h2>
+          <p>
+            Open AgentOps keeps code, traces, tool policies, and secrets inside the user's environment by
+            default. Hosted dashboards can come later; the release gate works today from the repo.
+          </p>
+        </div>
+        <div class="launch-actions">
+          <a class="button button-primary" href="https://github.com/reddywritescode/open-agentops/releases/tag/v0.1.0">View v0.1.0 release</a>
+          <a class="button button-secondary" href="https://github.com/reddywritescode/open-agentops/actions/runs/28357186117">See release CI</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Open AgentOps</span>
+      <a href="https://github.com/reddywritescode/open-agentops">GitHub</a>
+      <a href="https://github.com/reddywritescode/open-agentops/blob/main/README.md">Docs</a>
+      <a href="https://github.com/reddywritescode/open-agentops/releases/tag/v0.1.0">Release</a>
+    </footer>
+  </body>
+</html>
