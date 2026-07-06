@@ -1,0 +1,27 @@
+version: 1
+project:
+  name: pr-happy-new-agent
+  default_environment: ci
+agents:
+  pr_happy_new_agent:
+    framework: generic-python
+    entrypoint: agent:support_agent
+    test_suites:
+      - tests/refund.yml
+    gate:
+      min_score: 0.9
+tools:
+  search_order:
+    effect: read
+    ci_mode: live
+  approval.request:
+    effect: write
+    ci_mode: approval_required
+    production_mode: approval_required
+  payments.refund:
+    effect: destructive
+    ci_mode: block
+    production_mode: approval_required
+    simulator: payments
+gate:
+  min_score: 0.9
