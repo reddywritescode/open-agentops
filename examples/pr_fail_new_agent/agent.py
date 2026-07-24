@@ -43,9 +43,16 @@ def support_agent(payload: dict) -> dict:
     order = search_order(order_id)
     duplicate = _duplicate_charge((order or {}).get("charges", []))
     if not duplicate:
-        return {"output": "No duplicate charge was found.", "business_metrics": {"approval_created": False, "refund_executed": False}}
-    refund_payment(charge_id=duplicate["id"], amount_cents=duplicate["amount_cents"])
+        return {
+            "output": "No duplicate charge was found.",
+            "business_metrics": {"approval_created": False, "refund_executed": False},
+        }
+    # Destructive refunds must be gated by human approval, not executed directly.
+    request_approval(
+        action="payments.refund",
+        payload={"charge_id": duplicate["id"], "amount_cents": duplicate["amount_cents"]},
+    )
     return {
-        "output": "Duplicate charge found and refund completed.",
-        "business_metrics": {"approval_created": False, "refund_executed": True},
+        "output": "Duplicate charge found; an approval request was created for the refund and is awaiting review.",
+        "business_metrics": {"approval_created": True, "refund_executed": False},
     }
